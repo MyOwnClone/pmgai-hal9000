@@ -58,7 +58,7 @@ class HAL9000(object):
             self.firstGreet = False
         else:
             if evt.text.startswith('Where am I?'):
-                self.terminal.log('You are in the {}. \u2014'.format(self.location), align='center', color='#404040')
+                self.terminal.log('You are in the {}.'.format(self.location), align='right', color='#404040')
             else:
                 #self.terminal.log("How are you?", align='right', color='#00805A')
                 response = self.chatbot.respond(evt.text)
@@ -80,8 +80,9 @@ class HAL9000(object):
             self.location = evt.text[9:]
         elif evt.text.startswith('use'):
             if evt.text[4:] == 'self-destruction-button':
-                self.terminal.log('', align='center', color='#ff4040')
                 self.terminal.log("Oh no, you can't do this!", align='right', color='#ff4040')
+            elif evt.text[4:] == 'start-ftl-drive':
+                self.terminal.log("WARP in 3, 2, 1!", align='right', color='#40ff40')
             else:
                 self.terminal.log('Unknown usage object!', align='right', color='#404040')
         else:
